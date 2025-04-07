@@ -1,7 +1,6 @@
 package com.api.filter.logical;
 
 import com.api.filter.Filter;
-import com.api.filter.FilterException;
 import java.util.Map;
 
 /**
@@ -15,13 +14,11 @@ public class NotFilter extends LogicalFilter {
 
     @Override
     public boolean matches(Map<String, String> resource) {
-        // Delegate null check to the child filter
         return !filters[0].matches(resource);
     }
 
     @Override
     protected boolean evaluate(Map<String, String> resource) {
-        // This method is not used for NotFilter
         return false;
     }
 

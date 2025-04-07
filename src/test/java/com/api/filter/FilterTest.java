@@ -77,8 +77,8 @@ public class FilterTest {
         Filter greaterThan30 = greaterThan("age", 30);
         Filter greaterThan40 = greaterThan("age", 40);
 
-        assertTrue(greaterThan30.matches(resource));  // age=35 -> true
-        assertFalse(greaterThan40.matches(resource)); // age=35 -> false
+        assertTrue(greaterThan30.matches(resource)); 
+        assertFalse(greaterThan40.matches(resource));
         assertFalse(greaterThan30.matches(null));
         assertFalse(greaterThan30.matches(new HashMap<>()));
     }
@@ -94,8 +94,8 @@ public class FilterTest {
         Filter lessThan40 = lessThan("age", 40);
         Filter lessThan30 = lessThan("age", 30);
 
-        assertTrue(lessThan40.matches(resource)); // 35 < 40 -> true
-        assertFalse(lessThan30.matches(resource)); // 35 < 30 -> false
+        assertTrue(lessThan40.matches(resource)); 
+        assertFalse(lessThan30.matches(resource)); 
         assertFalse(lessThan40.matches(null));
         assertFalse(lessThan40.matches(new HashMap<>()));
     }
@@ -108,11 +108,9 @@ public class FilterTest {
         );
         assertTrue(adminOlderThan30.matches(resource));
 
-        // If we lower age to 20, the filter fails
         resource.put("age", "20");
         assertFalse(adminOlderThan30.matches(resource));
 
-        // Test with null resource
         assertFalse(adminOlderThan30.matches(null));
     }
 
@@ -137,25 +135,21 @@ public class FilterTest {
             equalTo("role", "administrator"),
             equalTo("role", "user")
         );
-        assertTrue(roleIsAdminOrUser.matches(resource)); // role=administrator
+        assertTrue(roleIsAdminOrUser.matches(resource));
 
-        // If we change role to "guest", it should fail
         resource.put("role", "guest");
         assertFalse(roleIsAdminOrUser.matches(resource));
 
-        // Test with null resource
         assertFalse(roleIsAdminOrUser.matches(null));
     }
 
     @Test
     public void testNotFilter() {
         Filter notAdmin = not(equalTo("role", "administrator"));
-        assertFalse(notAdmin.matches(resource));  // role=administrator, so notAdmin is false
+        assertFalse(notAdmin.matches(resource));  
 
         resource.put("role", "guest");
         assertTrue(notAdmin.matches(resource));
-
-        // Test with null resource
         assertTrue(notAdmin.matches(null));
     }
 
@@ -169,11 +163,9 @@ public class FilterTest {
         Filter emailRegex = regex("email", ".*@example\\.com");
         assertTrue(emailRegex.matches(resource));
 
-        // If we change the email
         resource.put("email", "joe@gmail.com");
         assertFalse(emailRegex.matches(resource));
 
-        // Test with null resource
         assertFalse(emailRegex.matches(null));
     }
 
@@ -189,7 +181,6 @@ public class FilterTest {
 
     @Test
     public void testComplexFilterCombinations() {
-        // Test a complex filter: (role=admin AND age>30) OR (role=user AND age<20)
         Filter complexFilter = or(
             and(
                 equalTo("role", "administrator"),
@@ -201,15 +192,12 @@ public class FilterTest {
             )
         );
 
-        // Should match because role=admin and age=35
         assertTrue(complexFilter.matches(resource));
 
-        // Change role to user and age to 15 - should match
         resource.put("role", "user");
         resource.put("age", "15");
         assertTrue(complexFilter.matches(resource));
 
-        // Change age to 25 - should not match
         resource.put("age", "25");
         assertFalse(complexFilter.matches(resource));
     }
