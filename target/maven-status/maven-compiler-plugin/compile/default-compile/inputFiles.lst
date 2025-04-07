@@ -1,0 +1,15 @@
+C:\Work\my-filters-project\src\main\java\com\api\App.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\ComparisonFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\EqualsFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\GreaterThanFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\LessThanFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\PresentFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\comparison\RegexFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\Filter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\FilterException.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\Filters.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\InvalidFilterException.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\logical\AndFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\logical\LogicalFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\logical\NotFilter.java
+C:\Work\my-filters-project\src\main\java\com\api\filter\logical\OrFilter.java
